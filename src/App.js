@@ -8,79 +8,45 @@ class App extends Component {
 
     this.state = {
       items: [],
-      monthly: {
-        year: '',
-        month: '1',
-        amount: '',
+      person: {
+        name: '',
       }
     }
+
+    this.handleInput = this.handleInput.bind(this);
+    this.addItems = this.addItems.bind(this);
   }
 
-  overpaymantsYear = e => {
-    const itemtext = e.target.value
-    const monthly = { year: itemtext }
+  handleInput(e) {
     this.setState({
-      monthly,
-    })
-  }
-
-  overpaymantsMonth = e => {
-    const itemtext = e.target.value
-    const monthly = { month: itemtext }
-    this.setState({
-      monthly,
-    })
-  }
-
-  overpaymantsAmount = e => {
-    const itemtext = e.target.value
-    const monthly = { amount: itemtext }
-    this.setState({
-      monthly,
-    })
-  }
-
-  addOverpaymants = e => {
-    e.preventDefault()
-    const newItem = this.state.monthly
-    if (newItem.year !== '') {
-      if (newItem.month !== '1') {
-        if (newItem.amount !== '') {
-          const items = [...this.state.items, newItem]
-          this.setState({
-            items: items,
-            monthly: {
-              year: '',
-              month: '1',
-              amount: '',
-            }
-          })
-        }
+      person: {
+        name: e.target.value,
       }
-    }
+    })
   }
 
-  removeItems = key => {
-    const newList = this.state.items.filter(item => {
-      return item.key !== key
-    })
+  addItems() {
+    const newItem = this.state.items.push(this.state.person)
     this.setState({
-      items: newList,
+      items: newItem,
+      person: {
+        name: '',
+      }
     })
+    console.log(this.state.items)
   }
 
   render() {
     return (
       <div>
         <Overpaymants
-          overpaymantsYear={this.overpaymantsYear}
-          overpaymantsMonth={this.overpaymantsMonth}
-          overpaymantsAmount={this.overpaymantsAmount}
-          monthly={this.state.monthly}
-          addOverpaymants={this.addOverpaymants} />
+          person={this.state.person}
+          handleInput={this.handleInput}
+          addItems={this.addItems}
+        />
         <Removeitems
-          entries={this.state.items}
-          removeItems={this.removeItems} />
+          addList={this.state.items}
+        />
       </div>
     );
   }

@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
 
 class Removeitems extends Component {
-    createTasks = item => {
+    render() {
         return (
             <div>
-                <li key={item.key}>
-                    {item.year}{item.month}{item.amount}
-                    <button onClick={() => this.props.removeItems(item.key)}> X </button>
-                </li>
+                <li>{this.props.addList}</li>
             </div>
-        )
-    }
-    render() {
-        const todoEntries = this.props.entries
-        const listItems = todoEntries.map(this.createTasks)
-        return (
-        <ul>{listItems}</ul>
-        )
+        );
     }
 }
-
 export default Removeitems;
