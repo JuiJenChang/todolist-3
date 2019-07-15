@@ -26,14 +26,26 @@ class App extends Component {
   }
 
   addItems() {
-    const newItem = this.state.items.push(this.state.person)
-    this.setState({
-      items: newItem,
-      person: {
-        name: '',
-      }
-    })
+    const newItem = this.state.person
+    if (newItem.name !== '') {
+      const task = this.state.items.push(this.state.person);
+      this.setState({
+        items: task,
+        person: {
+          name: '',
+        }
+      })
+    }
     console.log(this.state.items)
+  }
+
+  deleteItem = key => {
+    const filteredItems = this.state.items.filter(item => {
+      return item.key !== key
+    })
+    this.setState({
+      items: filteredItems,
+    })
   }
 
   render() {
@@ -46,6 +58,7 @@ class App extends Component {
         />
         <Removeitems
           addList={this.state.items}
+          deleteItem={this.state.deleteItem}
         />
       </div>
     );
