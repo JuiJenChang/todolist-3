@@ -23,6 +23,7 @@ class App extends Component {
         name: e.target.value,
       }
     })
+    //console.log(this.state.person)
   }
 
   addItems() {
@@ -36,7 +37,7 @@ class App extends Component {
         }
       })
     }
-    console.log(this.state.items)
+    //console.log(this.state.items)
   }
 
   deleteItem = key => {
@@ -58,7 +59,6 @@ class App extends Component {
         />
         <Removeitems
           addList={this.state.items}
-          deleteItem={this.state.deleteItem}
         />
       </div>
     );

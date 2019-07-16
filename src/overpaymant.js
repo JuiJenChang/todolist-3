@@ -9,7 +9,7 @@ class Overpaymants extends Component {
             value={this.props.person.name}
             onChange={this.props.handleInput}
           />
-          <button onClick={this.props.addItems}>+</button>
+          <button onClick={() => this.props.addItems}>+</button>
       </div>
     )
   }
