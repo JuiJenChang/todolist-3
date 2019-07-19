@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Overpaymants from './overpaymant';
-import Removeitems from './remove';
+import DataList from './DataList';
+import DataItems from './DataItems';
 
 class App extends Component {
   constructor() {
@@ -8,36 +8,56 @@ class App extends Component {
 
     this.state = {
       items: [],
-      person: {
         name: '',
-      }
+        height: '',
+        weight: '',
+        key: '',
     }
-
-    this.handleInput = this.handleInput.bind(this);
-    this.addItems = this.addItems.bind(this);
   }
 
-  handleInput(e) {
+  nameHandleInput = e => {
+    const itemText = e.target.value
     this.setState({
-      person: {
-        name: e.target.value,
-      }
+      name: itemText, 
+      key: Date.now()
     })
-    //console.log(this.state.person)
+    //console.log(this.state.name)
   }
 
-  addItems() {
-    const newItem = this.state.person
-    if (newItem.name !== '') {
-      const task = this.state.items.push(this.state.person);
+  heightHandleInput = e => {
+    const itemText2 = e.target.value
+    this.setState({
+      height: itemText2, 
+      key: Date.now()
+    })
+    //console.log(this.state.height)
+  }
+
+  weightHandleInput = e => {
+    const itemText3 = e.target.value
+    this.setState({
+      weight: itemText3, 
+      key: Date.now()
+    })
+    //console.log(this.state.weight)
+  }
+  
+  addItems = e => {
+    e.preventDefault()
+    const newItem = this.state.name
+    const newItem2 = this.state.height
+    const newItem3 = this.state.weight
+    if(newItem !== '' && newItem2 !=='' && newItem3 !== '') {
+      const items = [...this.state.items, newItem, newItem2, newItem3]
       this.setState({
-        items: task,
-        person: {
+          items: items,
           name: '',
-        }
+          height: '',
+          weight: '',
+          key: ''
       })
     }
-    //console.log(this.state.items)
+    console.log(this.state.items)
   }
 
   deleteItem = key => {
@@ -52,13 +72,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Overpaymants
-          person={this.state.person}
-          handleInput={this.handleInput}
+        <DataList 
+          nameHandleInput={this.nameHandleInput}
+          heightHandleInput={this.heightHandleInput}
+          weightHandleInput={this.weightHandleInput}
           addItems={this.addItems}
+          name={this.state.name}
+          height={this.state.height}
+          weight={this.state.weight}
         />
-        <Removeitems
-          addList={this.state.items}
+        <DataItems 
+          arr={this.state.items}
+          deleteItem={this.deleteItem}
         />
       </div>
     );
