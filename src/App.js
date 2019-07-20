@@ -8,18 +8,18 @@ class App extends Component {
 
     this.state = {
       items: [],
-        name: '',
-        height: '',
-        weight: '',
-        key: '',
+      name: '',
+      height: '',
+      weight: '',
+      key: '',
     }
   }
 
   nameHandleInput = e => {
     const itemText = e.target.value
     this.setState({
-      name: itemText, 
-      key: Date.now()
+        name: itemText,
+        key: Date.now()
     })
     //console.log(this.state.name)
   }
@@ -27,8 +27,8 @@ class App extends Component {
   heightHandleInput = e => {
     const itemText2 = e.target.value
     this.setState({
-      height: itemText2, 
-      key: Date.now()
+        height: itemText2, 
+        key: Date.now()
     })
     //console.log(this.state.height)
   }
@@ -36,8 +36,8 @@ class App extends Component {
   weightHandleInput = e => {
     const itemText3 = e.target.value
     this.setState({
-      weight: itemText3, 
-      key: Date.now()
+        weight: itemText3, 
+        key: Date.now()
     })
     //console.log(this.state.weight)
   }
@@ -47,14 +47,14 @@ class App extends Component {
     const newItem = this.state.name
     const newItem2 = this.state.height
     const newItem3 = this.state.weight
-    if(newItem !== '' && newItem2 !=='' && newItem3 !== '') {
+    if(newItem !== ''&& newItem2 !=='' && newItem3 !== '') {
       const items = [...this.state.items, newItem, newItem2, newItem3]
       this.setState({
           items: items,
           name: '',
           height: '',
           weight: '',
-          key: ''
+          key: '',
       })
     }
     console.log(this.state.items)
