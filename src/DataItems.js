@@ -4,9 +4,9 @@ import './App.css'
 class DataItems extends Component {
     
     render() {
-        const listItems = this.props.arr.map((item, i) => 
+        const listItems = this.props.arr.map(({name, height, weight}, i) => 
         <li key={i}>
-            {item}
+            {name}{height}{weight}
         <button onClick={this.props.deleteItem}>x</button>
         </li>
         );

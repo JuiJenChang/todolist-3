@@ -8,56 +8,62 @@ class App extends Component {
 
     this.state = {
       items: [],
-      name: '',
-      height: '',
-      weight: '',
-      key: '',
+      data: {
+        name: '',
+        height: '',
+        weight: '',
+      }
     }
   }
 
   nameHandleInput = e => {
     const itemText = e.target.value
     this.setState({
+      data: {
+        ...this.state.data,
         name: itemText,
-        key: Date.now()
+      }
     })
-    //console.log(this.state.name)
+    //console.log(this.state.data)
   }
 
   heightHandleInput = e => {
     const itemText2 = e.target.value
     this.setState({
-        height: itemText2, 
-        key: Date.now()
+      data: {
+        ...this.state.data,
+        height: itemText2,
+      }
     })
-    //console.log(this.state.height)
+    //console.log(this.state.data)
   }
 
   weightHandleInput = e => {
     const itemText3 = e.target.value
     this.setState({
-        weight: itemText3, 
-        key: Date.now()
+      data: {
+        ...this.state.data,
+        weight: itemText3,
+      }
     })
-    //console.log(this.state.weight)
+    //console.log(this.state.data)
   }
-  
+
   addItems = e => {
     e.preventDefault()
-    const newItem = this.state.name
-    const newItem2 = this.state.height
-    const newItem3 = this.state.weight
-    if(newItem !== ''&& newItem2 !=='' && newItem3 !== '') {
-      const items = [...this.state.items, newItem, newItem2, newItem3]
+    const newItem = this.state.data
+    if (newItem.name !== '' && newItem.height !== '' && newItem.weight !== '') {
+      const items = [...this.state.items, newItem]
       this.setState({
-          items: items,
+        items: items,
+        data: {
           name: '',
           height: '',
           weight: '',
-          key: '',
+        }
       })
     }
-    console.log(this.state.items)
+    console.log(this.state.data)
   }
 
   deleteItem = key => {
@@ -72,16 +78,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <DataList 
+        <DataList
           nameHandleInput={this.nameHandleInput}
           heightHandleInput={this.heightHandleInput}
           weightHandleInput={this.weightHandleInput}
           addItems={this.addItems}
-          name={this.state.name}
-          height={this.state.height}
-          weight={this.state.weight}
+          name={this.state.data.name}
+          height={this.state.data.height}
+          weight={this.state.data.weight}
         />
-        <DataItems 
+        <DataItems
           arr={this.state.items}
           deleteItem={this.deleteItem}
         />
