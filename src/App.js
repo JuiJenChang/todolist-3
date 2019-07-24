@@ -63,7 +63,6 @@ class App extends Component {
         }
       })
     }
-    console.log(this.state.data)
   }
 
   deleteItem = key => {
@@ -73,6 +72,7 @@ class App extends Component {
     this.setState({
       items: filteredItems,
     })
+    console.log(filteredItems)
   }
 
   render() {
@@ -96,3 +96,14 @@ class App extends Component {
   }
 }
 export default App;
+
+
+/* for(var i = 0; i<this.state.items.length; i++ ){
+      if(this.state.items[i] === target) {
+        this.state.items.splice(i, 1);
+        this.setState({
+          items: this.state.items,
+        })
+      }
+    }
+    console.log(this.state.items)*/
