@@ -23,7 +23,7 @@ class DataList extends Component {
           onChange={this.props.weightHandleInput}
           placeholder='kg'
         />
-        <button onClick={this.props.addItems}>+</button>
+        <button className="add-btn" onClick={this.props.addItems}>Add</button>
       </div>
     );
   }

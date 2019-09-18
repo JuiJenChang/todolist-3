@@ -24,7 +24,6 @@ class App extends Component {
         name: itemText,
       }
     })
-    //console.log(this.state.data)
   }
 
   heightHandleInput = e => {
@@ -35,7 +34,6 @@ class App extends Component {
         height: itemText2,
       }
     })
-    //console.log(this.state.data)
   }
 
   weightHandleInput = e => {
@@ -46,7 +44,6 @@ class App extends Component {
         weight: itemText3,
       }
     })
-    //console.log(this.state.data)
   }
 
   addItems = e => {
@@ -66,13 +63,12 @@ class App extends Component {
   }
 
   deleteItem = key => {
-    const filteredItems = this.state.items.filter(item => {
-      return item.key !== key
+    const filteredItems = this.state.items.filter((item, i) => {
+      return i !== key
     })
     this.setState({
       items: filteredItems,
     })
-    console.log(filteredItems)
   }
 
   render() {

@@ -134,3 +134,15 @@ h4{
   padding: 0 10px;
   color: #2866e2
 }
+.add-btn{
+  background: #ffffff;
+  color: #26dd26;
+  cursor: pointer;
+  font-size: 13px;
+}
+.remove-btn{
+  float: right;
+  cursor: pointer;
+  color: #2866e2;
+  font-size: 30px;
+}

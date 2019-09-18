@@ -8,9 +8,9 @@ class DataItems extends Component {
         const listItems = this.props.arr.map(({ name, height, weight }, i) =>
                 <li key={i}>
                 <span className="listspan">Name:</span>{name}
-                <span className="listspan">Height:</span>{height}<span>cm</span>
-                <span className="listspan">Weight:</span>{weight}<span>kg</span>
-                <GoTrashcan onClick={this.props.deleteItem}/>
+                <span className="listspan">Height:</span>{height}<span>(cm)</span>
+                <span className="listspan">Weight:</span>{weight}<span>(kg)</span>
+                <GoTrashcan className="remove-btn" onClick={() => this.props.deleteItem(i)}/>
                 </li>
         );
         return <ul className="thelist">{listItems}</ul>
