@@ -92,14 +92,3 @@ class App extends Component {
   }
 }
 export default App;
-
-
-/* for(var i = 0; i<this.state.items.length; i++ ){
-      if(this.state.items[i] === target) {
-        this.state.items.splice(i, 1);
-        this.setState({
-          items: this.state.items,
-        })
-      }
-    }
-    console.log(this.state.items)*/
